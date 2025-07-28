@@ -20,7 +20,7 @@ export default function SignaturePad({
     if (sigRef.current?.isEmpty()) {
       onEnd('')
     }
-  }, [])
+  }, [onEnd])
 
   return (
     <div className="w-full">
