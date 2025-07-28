@@ -14,10 +14,7 @@ export default function SignaturePad({
 }) {
   const sigRef = useRef<SignatureCanvas>(null)
 
-  const clear = () => {
-    sigRef.current?.clear()
-    onEnd('')
-  }
+
 
   useEffect(() => {
     if (sigRef.current?.isEmpty()) {
