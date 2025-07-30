@@ -19,26 +19,216 @@ export default function AgreementPage() {
 
   const router = useRouter()
 
-  const syarat = layanan === 'Rentalday' || layanan === 'Pixelnesia' ? (
-    <ol className="list-decimal space-y-1 pl-4 text-sm text-black">
-      <li>Sistem sewa 24 jam (contoh: 12.00 – 12.00).</li>
-      <li>Biaya service layanan Rp10.000.</li>
-      <li>Late Checkout minimal 3 jam. Dikenakan Rp15.000/jika lebih dari 3 jam, maka dihitung biaya sewa 1/2 hari.</li>
-      <li>Fasilitas: 2 kabel, 1 tas laptop, sanggahan, headphone, kunci, kursi, dll.</li>
-      <li>Pengembalian wajib dicek sesuai jumlah dan kondisi barang saat diterima.</li>
-      <li>Penyewa wajib mengisi data diri lengkap dan valid (KTP/SIM/Paspor).</li>
-      <li>Penyewa berusia minimal 18 tahun dan memiliki identitas resmi.</li>
-      <li>Pelunasan dilakukan di muka sesuai harga dan durasi yang dipilih.</li>
-      <li>Dilarang memindahtangankan unit ke pihak lain tanpa izin.</li>
-      <li>Keterlambatan pengembalian akan dikenakan denda sesuai ketentuan.</li>
-      <li>Kerusakan/kehilangan menjadi tanggung jawab penyewa.</li>
-      <li>Penyewa wajib mengikuti prosedur serah-terima & pengembalian unit.</li>
-      <li>Penyewa menyetujui verifikasi data sebelum sewa disetujui.</li>
-      <li>Transaksi dianggap sah setelah bukti pembayaran diterima.</li>
-    </ol>
-  ) : (
-    <p className="text-sm text-black">Layanan tidak dikenali.</p>
-  )
+  const syarat =
+    layanan === 'Pixelnesia' ? (
+      <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
+  <li>
+    <strong>Kedatangan & Operasional</strong>
+    <ul className="list-disc list-inside ml-4">
+      <li>Bisa datang ke store jika belum proses verifikasi izin sewa.</li>
+      <li>Jam operasional: 08.00 - 21.00</li>
+      <li>Sistem sewa: 24 Jam / 1 Hari</li>
+      <li>COD (antar di luar store) dikenakan biaya tambahan (ongkir)</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Sistem Biaya</strong>
+    <ul className="list-disc list-inside ml-4">
+      <li>Sewa berlaku 24 Jam = 1 Hari</li>
+      <li>COD di luar store akan dikenakan biaya ongkir</li>
+      <li>Biaya layanan (service fee): Rp 10.000 / transaksi</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Keterlambatan & Extend</strong>
+    <ul className="list-disc list-inside ml-4">
+      <li>Telat / tambah 1 jam: kena biaya 10%</li>
+      <li>Telat / tambah 2 s/d 12 jam: biaya 50%</li>
+      <li>Lebih dari 12 jam: kena biaya sewa 1 hari</li>
+      <li>Service fee dikenakan untuk minimal extend 1 hari</li>
+      <li>⏰ Konfirmasi extend maksimal 4 jam sebelum waktu sewa habis.</li>
+      <li>💸 Biaya extend harus ditransfer maksimal 2 jam sebelum waktu sewa habis.</li>
+      <li>🔁 Jika tidak melakukan pembayaran extend, maka unit wajib dikembalikan sesuai jam sewa awal.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Kebijakan Lainnya</strong>
+    <ul className="list-disc list-inside ml-4">
+      <li>Sampaikan aplikasi yang dibutuhkan, karena tidak bisa download sendiri</li>
+      <li>Tidak bisa login iCloud</li>
+      <li>Permintaan pemindahan data oleh tim Pixel dikenakan biaya Rp 100.000 / 100 foto & video</li>
+      <li>Pastikan unit kembali dalam kondisi seperti semula</li>
+      <li>Segala kerusakan / kehilangan saat pemakaian menjadi 100% tanggung jawab penyewa</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Proses Booking</strong>
+    <ul className="list-disc list-inside ml-4">
+      <li>Isi data booking</li>
+      <li>Pengecekan unit & jadwal</li>
+      <li>Informasi total biaya sewa</li>
+      <li>Isi form pesanan dan lampiran</li>
+      <li>Verifikasi keamanan data + follow back IG</li>
+      <li>Transfer DP 50%</li>
+      <li>Jadwal disimpan (keep)</li>
+      <li>Dihubungi kembali H-1 untuk konfirmasi pengantaran</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Lampiran Verifikasi Data</strong>
+    <ul className="list-disc list-inside ml-4">
+      <li>Foto KTP Asli</li>
+      <li>Foto Kartu Keluarga</li>
+      <li>Screenshot Profil Instagram penyewa</li>
+      <li>Screenshot Profil Instagram orang terdekat</li>
+      <li>Foto SIM atau KTP orang terdekat (khusus KTP luar kota)</li>
+      <li>Selfie terbaru</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Jaminan</strong>
+    <ul className="list-disc list-inside ml-4">
+      <li>🔐 Penyewa wajib menyerahkan identitas berupa:</li>
+      <li>KTP penyewa + KTP/SIM/kartu pelajar orang terdekat</li>
+      <li>Mohon dibawa saat COD sebagai jaminan</li>
+    </ul>
+  </li>
+</ol>
+    ) : layanan === 'Rentalday' ? (
+      <ol className="list-decimal space-y-3 pl-4 text-sm text-black">
+    <li>
+      <strong>Lokasi Pengambilan Unit</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Alamat: Jl. Kebon Kawung No. 49-50, Pasir Kaliki, Kec. Cicendo, Kota Bandung, Jawa Barat 40171</li>
+        <li>Google Maps: Rentalday Bandung / Rentalday Cab 2 (Sewa Motor Bandung)</li>
+        <li>Alamat Ojek Online: Rentalday Cab 2 (Sewa Motor Bandung) / Harmoni Trans Bandung</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Pengantaran Unit</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Pengantaran ke hotel/stasiun/COD di luar garasi akan dikenakan biaya tambahan sesuai jarak tempuh</li>
+        <li>Biaya tambahan diinformasikan oleh admin</li>
+        <li>Waktu pengantaran tidak dapat dijamin tepat waktu karena tergantung kondisi lalu lintas</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Sistem Sewa</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Sewa berlaku 24 jam</li>
+        <li>Weekday: dihitung dari pukul 12.00 - 12.00</li>
+        <li>Weekend: dihitung dari pukul 00.00 - 00.00</li>
+        <li>Biaya layanan: Rp 10.000</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Hitungan Waktu Sewa</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Weekday:
+          <ul className="list-disc pl-6">
+            <li>08.00 - 08.00 = 1 Hari</li>
+            <li>09.00 - 09.00 = 1 Hari</li>
+            <li>12.00 - 12.00 = 1 Hari</li>
+            <li>13.00 - 12.00 = 1 Hari</li>
+          </ul>
+        </li>
+        <li>Weekend:
+          <ul className="list-disc pl-6">
+            <li>00.00 - 00.00 = 1 Hari</li>
+            <li>08.00 - 00.00 = 1 Hari</li>
+            <li>dan seterusnya</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <strong>Late Checkout</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Minimal keterlambatan 3 jam</li>
+        <li>Dikenakan Rp 15.000/jam</li>
+        <li>Jika melebihi 3 jam, dikenakan biaya sewa setengah hari</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Booking Weekend</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Booking hanya 1 hari (misal: Sabtu saja atau Minggu saja) dikenakan charge tambahan Rp 20.000</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Fasilitas Unit</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>2 Buah Helm</li>
+        <li>2 Buah Jas Hujan</li>
+        <li>Phone Holder</li>
+        <li>Kanebo</li>
+        <li>Kunci Ganda</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Pengisian Bensin</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Wajib mengembalikan motor dengan jumlah bar bensin yang sama saat serah terima</li>
+        <li>Jika kurang, akan dikenakan biaya Rp 10.000/bar yang hilang</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Persyaratan Penyewa</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>KTP Asli (bukan scan)</li>
+        <li>SIM C aktif (opsional, jika tidak ada bukan tanggung jawab kami bila terjadi tilang)</li>
+        <li>Tiket perjalanan pulang-pergi</li>
+        <li>Bukti booking hotel</li>
+        <li>Akun Instagram asli</li>
+        <li>Kontak darurat</li>
+        <li>Selfie dan dokumen pendukung lainnya (akan diinformasikan admin saat booking fix)</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Batas Wilayah Pemakaian</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Hanya diperbolehkan digunakan di wilayah Bandung dan sekitarnya</li>
+        <li>(Maksimal: Cimahi, Padalarang, Ciwidey, Pangalengan)</li>
+        <li>Jika ditemukan digunakan di luar area tersebut, akan dikenakan denda 2x lipat dari harga sewa</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Sistem Pembayaran</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Wajib DP minimal 50% dari total harga sewa</li>
+        <li>DP tidak dapat dikembalikan sepihak dengan alasan apapun</li>
+        <li>Reschedule maksimal 15 hari sejak transfer dilakukan</li>
+        <li>Reschedule wajib diinformasikan paling lambat H-3</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Tanggung Jawab Kerusakan / Kehilangan</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Segala kerusakan atau kehilangan selama masa sewa menjadi tanggung jawab penyewa</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Jam Operasional</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Buka dari pukul 08.00 – 22.00 WIB (termasuk untuk antar jemput / COD)</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Tanggal Merah / Libur Nasional</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Akan dikenakan kenaikan harga, sesuai kebijakan yang berlaku</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Kriteria Penyewa</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Dikhususkan untuk wisatawan atau mahasiswa dengan KTP luar Bandung</li>
+      </ul>
+    </li>
+  </ol>
+    ) : (
+      <p className="text-sm text-black">Layanan tidak dikenali.</p>
+    )
 
   const handleSubmit = async () => {
     if (!agreed || !signature) {
@@ -105,14 +295,12 @@ export default function AgreementPage() {
           <SignaturePad onEnd={setSignature} />
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center px-3">
           <button
             disabled={isLoading}
             onClick={handleSubmit}
             className={`w-full text-white py-2 rounded font-medium ${
-              isLoading
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-500 hover:bg-blue-600'
+              isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
             }`}
           >
             {isLoading ? 'Mengirim...' : 'Kirim'}

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CustomDropdown from './components/CustomDropdown'
 
 export default function FormPage() {
@@ -9,12 +9,15 @@ export default function FormPage() {
   const [selectedLayanan, setSelectedLayanan] = useState({ name: '' })
   const [nama, setNama] = useState('')
   const [telepon, setTelepon] = useState('')
+  const [formError, setFormError] = useState('')
 
   const handleNext = () => {
     if (!selectedLayanan.name || !nama || !telepon) {
-      alert('Harap lengkapi semua data.')
+      setFormError('Harap lengkapi semua data sebelum melanjutkan.')
       return
     }
+
+    setFormError('') // Bersihkan pesan error sebelumnya
 
     const params = new URLSearchParams({
       layanan: selectedLayanan.name,
@@ -24,6 +27,16 @@ export default function FormPage() {
 
     router.push(`/agreement?${params.toString()}`)
   }
+
+  // Hapus alert otomatis setelah 4 detik
+  useEffect(() => {
+    if (formError) {
+      const timeout = setTimeout(() => {
+        setFormError('')
+      }, 4000)
+      return () => clearTimeout(timeout)
+    }
+  }, [formError])
 
   return (
     <div className="min-h-screen bg-white">
@@ -42,7 +55,6 @@ export default function FormPage() {
             selected={selectedLayanan}
             setSelected={setSelectedLayanan}
           />
-          {/* Ikon panah dropdown */}
           <div className="absolute inset-y-0 right-3 top-[26px] flex items-center pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-400"
@@ -80,10 +92,25 @@ export default function FormPage() {
           />
         </div>
 
+        {/* Alert Error */}
+        {formError && (
+          <div className="relative bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-sm">
+            <strong className="font-semibold">Error: </strong>
+            {formError}
+            <button
+              className="absolute top-1 right-2 text-lg font-bold text-red-500"
+              onClick={() => setFormError('')}
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
+        )}
+
         {/* Tombol Selanjutnya */}
-        <div className="flex justify-center bg-[#0899E1] hover:bg-[#007bc1] rounded-md">
+        <div className="flex justify-center">
           <button
-            className=" text-white px-6 py-2 rounded font-medium"
+            className="w-full text-white px-6 py-2 rounded font-medium bg-[#0899E1] hover:bg-[#007bc1] focus:outline focus:outline-2 focus:outline-white focus:outline-offset-2"
             onClick={handleNext}
           >
             Selanjutnya
