@@ -88,7 +88,7 @@ export default function AgreementPage() {
   <li>
     <strong>Jaminan</strong>
     <ul className="list-disc list-inside ml-4">
-      <li>🔐 Penyewa wajib menyerahkan identitas berupa:</li>
+      <li>Penyewa wajib menyerahkan identitas berupa:</li>
       <li>KTP penyewa + KTP/SIM/kartu pelajar orang terdekat</li>
       <li>Mohon dibawa saat COD sebagai jaminan</li>
     </ul>
@@ -99,9 +99,8 @@ export default function AgreementPage() {
     <li>
       <strong>Lokasi Pengambilan Unit</strong>
       <ul className="list-disc pl-6 space-y-1">
-        <li>Alamat: Jl. Kebon Kawung No. 49-50, Pasir Kaliki, Kec. Cicendo, Kota Bandung, Jawa Barat 40171</li>
-        <li>Google Maps: Rentalday Bandung / Rentalday Cab 2 (Sewa Motor Bandung)</li>
-        <li>Alamat Ojek Online: Rentalday Cab 2 (Sewa Motor Bandung) / Harmoni Trans Bandung</li>
+        <li>Alamat Bandung : Jl. Kebon Kawung No. 49-50, Pasir Kaliki, Kec. Cicendo, Kota Bandung, Jawa Barat 40171</li>
+        <li>Alamat Malang : Jl. Puntadewa III No.14, Polehan, Kec. Blimbing, Kota Malang, Jawa Timur 65121</li>
       </ul>
     </li>
     <li>
@@ -175,21 +174,22 @@ export default function AgreementPage() {
     <li>
       <strong>Persyaratan Penyewa</strong>
       <ul className="list-disc pl-6 space-y-1">
-        <li>KTP Asli (bukan scan)</li>
         <li>SIM C aktif (opsional, jika tidak ada bukan tanggung jawab kami bila terjadi tilang)</li>
         <li>Tiket perjalanan pulang-pergi</li>
         <li>Bukti booking hotel</li>
         <li>Akun Instagram asli</li>
-        <li>Kontak darurat</li>
         <li>Selfie dan dokumen pendukung lainnya (akan diinformasikan admin saat booking fix)</li>
       </ul>
     </li>
     <li>
       <strong>Batas Wilayah Pemakaian</strong>
       <ul className="list-disc pl-6 space-y-1">
-        <li>Hanya diperbolehkan digunakan di wilayah Bandung dan sekitarnya</li>
+        {/* <li>Hanya diperbolehkan digunakan di wilayah Bandung dan sekitarnya</li>
         <li>(Maksimal: Cimahi, Padalarang, Ciwidey, Pangalengan)</li>
-        <li>Jika ditemukan digunakan di luar area tersebut, akan dikenakan denda 2x lipat dari harga sewa</li>
+        <li>Jika ditemukan digunakan di luar area tersebut, akan dikenakan denda 2x lipat dari harga sewa</li> */}
+        <li>Bandung : pemakaian hanya boleh disekitar kota bandung dan kabupaten bandung (lembang,pangalengan, ciwidey, & padalarang)
+          <li>Malang : pemakaian hanya boleh disekitar kota Malang dan Batu.</li>
+        </li>
       </ul>
     </li>
     <li>
@@ -222,7 +222,13 @@ export default function AgreementPage() {
     <li>
       <strong>Kriteria Penyewa</strong>
       <ul className="list-disc pl-6 space-y-1">
-        <li>Dikhususkan untuk wisatawan atau mahasiswa dengan KTP luar Bandung</li>
+        <li>Dikhususkan untuk wisatawan atau mahasiswa (khusus ktp luar kota sewa)</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Ketentuan Jaminan</strong>
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Penyewa menyanggupi deposit jaminan berupa KTP/SIM C/PASPOR selama masa sewa motor</li>
       </ul>
     </li>
   </ol>
