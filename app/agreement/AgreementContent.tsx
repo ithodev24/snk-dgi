@@ -6,7 +6,7 @@ import SignaturePad from '../components/SignaturePad'
 import axios from 'axios'
 import { ChevronLeftIcon } from '@heroicons/react/20/solid'
 
-export default function AgreementPage() {
+export default async function AgreementContent() {
   const searchParams = useSearchParams()
   const layanan = searchParams.get('layanan') || ''
   const nama = searchParams.get('nama') || ''
@@ -19,222 +19,49 @@ export default function AgreementPage() {
 
   const router = useRouter()
 
+  // await new Promise((resolve) => setTimeout(resolve, 3000))
+
   const syarat =
-    layanan === 'Pixelnesia' ? (
-      <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
-  <li>
-    <strong>Kedatangan & Operasional</strong>
-    <ul className="list-disc list-inside ml-4">
-      <li>Bisa datang ke store jika belum proses verifikasi izin sewa.</li>
-      <li>Jam operasional: 08.00 - 21.00</li>
-      <li>Sistem sewa: 24 Jam / 1 Hari</li>
-      <li>COD (antar di luar store) dikenakan biaya tambahan (ongkir)</li>
-    </ul>
-  </li>
-  <li>
-    <strong>Sistem Biaya</strong>
-    <ul className="list-disc list-inside ml-4">
-      <li>Sewa berlaku 24 Jam = 1 Hari</li>
-      <li>COD di luar store akan dikenakan biaya ongkir</li>
-      <li>Biaya layanan (service fee): Rp 10.000 / transaksi</li>
-    </ul>
-  </li>
-  <li>
-    <strong>Keterlambatan & Extend</strong>
-    <ul className="list-disc list-inside ml-4">
-      <li>Telat / tambah 1 jam: kena biaya 10%</li>
-      <li>Telat / tambah 2 s/d 12 jam: biaya 50%</li>
-      <li>Lebih dari 12 jam: kena biaya sewa 1 hari</li>
-      <li>Service fee dikenakan untuk minimal extend 1 hari</li>
-      <li>⏰ Konfirmasi extend maksimal 4 jam sebelum waktu sewa habis.</li>
-      <li>💸 Biaya extend harus ditransfer maksimal 2 jam sebelum waktu sewa habis.</li>
-      <li>🔁 Jika tidak melakukan pembayaran extend, maka unit wajib dikembalikan sesuai jam sewa awal.</li>
-    </ul>
-  </li>
-  <li>
-    <strong>Kebijakan Lainnya</strong>
-    <ul className="list-disc list-inside ml-4">
-      <li>Sampaikan aplikasi yang dibutuhkan, karena tidak bisa download sendiri</li>
-      <li>Tidak bisa login iCloud</li>
-      <li>Permintaan pemindahan data oleh tim Pixel dikenakan biaya Rp 100.000 / 100 foto & video</li>
-      <li>Pastikan unit kembali dalam kondisi seperti semula</li>
-      <li>Segala kerusakan / kehilangan saat pemakaian menjadi 100% tanggung jawab penyewa</li>
-    </ul>
-  </li>
-  <li>
-    <strong>Proses Booking</strong>
-    <ul className="list-disc list-inside ml-4">
-      <li>Isi data booking</li>
-      <li>Pengecekan unit & jadwal</li>
-      <li>Informasi total biaya sewa</li>
-      <li>Isi form pesanan dan lampiran</li>
-      <li>Verifikasi keamanan data + follow back IG</li>
-      <li>Transfer DP 50%</li>
-      <li>Jadwal disimpan (keep)</li>
-      <li>Dihubungi kembali H-1 untuk konfirmasi pengantaran</li>
-    </ul>
-  </li>
-  <li>
-    <strong>Lampiran Verifikasi Data</strong>
-    <ul className="list-disc list-inside ml-4">
-      <li>Foto KTP Asli</li>
-      <li>Foto Kartu Keluarga</li>
-      <li>Screenshot Profil Instagram penyewa</li>
-      <li>Screenshot Profil Instagram orang terdekat</li>
-      <li>Foto SIM atau KTP orang terdekat (khusus KTP luar kota)</li>
-      <li>Selfie terbaru</li>
-    </ul>
-  </li>
-  <li>
-    <strong>Jaminan</strong>
-    <ul className="list-disc list-inside ml-4">
-      <li>Penyewa wajib menyerahkan identitas berupa:</li>
-      <li>KTP penyewa + KTP/SIM/kartu pelajar orang terdekat</li>
-      <li>Mohon dibawa saat COD sebagai jaminan</li>
-    </ul>
-  </li>
-</ol>
-    ) : layanan === 'Rentalday' ? (
-      <ol className="list-decimal space-y-3 pl-4 text-sm text-black">
-    <li>
-      <strong>Lokasi Pengambilan Unit</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Alamat Bandung : Jl. Kebon Kawung No. 49-50, Pasir Kaliki, Kec. Cicendo, Kota Bandung, Jawa Barat 40171</li>
-        <li>Alamat Malang : Jl. Puntadewa III No.14, Polehan, Kec. Blimbing, Kota Malang, Jawa Timur 65121</li>
+  layanan === 'Pixelnesia' ? (
+    <div className="space-y-2 text-sm text-gray-700">
+      <ul className="list-disc list-inside ml-4">
+        <li>Melampirkan identitas seperti KTP/Paspor</li>
+        <li>Usia 17 tahun ke bawah yang belum memiliki identitas wajib melampirkan KTP/Paspor orang tua</li>
+        <li>Melengkapi lampiran yang diminta seperti sosial media penyewa, Kartu Keluarga, dan selfie terbaru</li>
       </ul>
-    </li>
-    <li>
-      <strong>Pengantaran Unit</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Pengantaran ke hotel/stasiun/COD di luar garasi akan dikenakan biaya tambahan sesuai jarak tempuh</li>
-        <li>Biaya tambahan diinformasikan oleh admin</li>
-        <li>Waktu pengantaran tidak dapat dijamin tepat waktu karena tergantung kondisi lalu lintas</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Sistem Sewa</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Sewa berlaku 24 jam</li>
-        <li>Weekday: dihitung dari pukul 12.00 - 12.00</li>
-        <li>Weekend: dihitung dari pukul 00.00 - 00.00</li>
-        <li>Biaya layanan: Rp 10.000</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Hitungan Waktu Sewa</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Weekday:
-          <ul className="list-disc pl-6">
-            <li>08.00 - 08.00 = 1 Hari</li>
-            <li>09.00 - 09.00 = 1 Hari</li>
-            <li>12.00 - 12.00 = 1 Hari</li>
-            <li>13.00 - 12.00 = 1 Hari</li>
-          </ul>
-        </li>
-        <li>Weekend:
-          <ul className="list-disc pl-6">
-            <li>00.00 - 00.00 = 1 Hari</li>
-            <li>08.00 - 00.00 = 1 Hari</li>
-            <li>dan seterusnya</li>
-          </ul>
+    </div>
+  ) : layanan === 'Rentalday' ? (
+    <div className="space-y-2 text-sm text-black">
+      <ul className="list-disc list-inside ml-4">
+        <li>Berusia 17 tahun ke atas</li>
+        <li>Memiliki KTP</li>
+        <li>Melengkapi syarat administrasi yang diminta</li>
+        <li>
+          Sewa motor khusus wisatawan dan mahasiswa yang sedang menempuh pendidikan di Bandung/Malang
+          (sesuai daerah sewa)
         </li>
       </ul>
-    </li>
-    <li>
-      <strong>Late Checkout</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Minimal keterlambatan 3 jam</li>
-        <li>Dikenakan Rp 15.000/jam</li>
-        <li>Jika melebihi 3 jam, dikenakan biaya sewa setengah hari</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Booking Weekend</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Booking hanya 1 hari (misal: Sabtu saja atau Minggu saja) dikenakan charge tambahan Rp 20.000</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Fasilitas Unit</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>2 Buah Helm</li>
-        <li>2 Buah Jas Hujan</li>
-        <li>Phone Holder</li>
-        <li>Kanebo</li>
-        <li>Kunci Ganda</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Pengisian Bensin</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Wajib mengembalikan motor dengan jumlah bar bensin yang sama saat serah terima</li>
-        <li>Jika kurang, akan dikenakan biaya Rp 10.000/bar yang hilang</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Persyaratan Penyewa</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>SIM C aktif (opsional, jika tidak ada bukan tanggung jawab kami bila terjadi tilang)</li>
-        <li>Tiket perjalanan pulang-pergi</li>
-        <li>Bukti booking hotel</li>
-        <li>Akun Instagram asli</li>
-        <li>Selfie dan dokumen pendukung lainnya (akan diinformasikan admin saat booking fix)</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Batas Wilayah Pemakaian</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        {/* <li>Hanya diperbolehkan digunakan di wilayah Bandung dan sekitarnya</li>
-        <li>(Maksimal: Cimahi, Padalarang, Ciwidey, Pangalengan)</li>
-        <li>Jika ditemukan digunakan di luar area tersebut, akan dikenakan denda 2x lipat dari harga sewa</li> */}
-        <li>Bandung : pemakaian hanya boleh disekitar kota bandung dan kabupaten bandung (lembang,pangalengan, ciwidey, & padalarang)
-          <li>Malang : pemakaian hanya boleh disekitar kota Malang dan Batu.</li>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <strong>Sistem Pembayaran</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Wajib DP minimal 50% dari total harga sewa</li>
-        <li>DP tidak dapat dikembalikan sepihak dengan alasan apapun</li>
-        <li>Reschedule maksimal 15 hari sejak transfer dilakukan</li>
-        <li>Reschedule wajib diinformasikan paling lambat H-3</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Tanggung Jawab Kerusakan / Kehilangan</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Segala kerusakan atau kehilangan selama masa sewa menjadi tanggung jawab penyewa</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Jam Operasional</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Buka dari pukul 08.00 – 22.00 WIB (termasuk untuk antar jemput / COD)</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Tanggal Merah / Libur Nasional</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Akan dikenakan kenaikan harga, sesuai kebijakan yang berlaku</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Kriteria Penyewa</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Dikhususkan untuk wisatawan atau mahasiswa (khusus ktp luar kota sewa)</li>
-      </ul>
-    </li>
-    <li>
-      <strong>Ketentuan Jaminan</strong>
-      <ul className="list-disc pl-6 space-y-1">
-        <li>Penyewa menyanggupi deposit jaminan berupa KTP/SIM C/PASPOR selama masa sewa motor</li>
-      </ul>
-    </li>
-  </ol>
-    ) : (
-      <p className="text-sm text-black">Layanan tidak dikenali.</p>
-    )
+
+      <div className="mt-4">
+        <strong>Notes Tambahan :</strong>
+
+        <p className="mt-2 font-semibold">Kelengkapan Syarat Sewa Khusus Wisatawan</p>
+        <ul className="list-disc list-inside ml-4">
+          <li>Melampirkan KTP/Paspor</li>
+          <li>Melampirkan tiket perjalanan, tiket penginapan, dan sosial media penyewa</li>
+        </ul>
+
+        <p className="mt-2 font-semibold">Kelengkapan Syarat Sewa Khusus Mahasiswa</p>
+        <ul className="list-disc list-inside ml-4">
+          <li>Wajib mahasiswa yang sedang menempuh pendidikan di Bandung/Malang (daerah sesuai tempat sewa)</li>
+          <li>Melampirkan Kartu Tanda Mahasiswa (KTM)</li>
+          <li>Shareloc alamat kost/alamat tinggal</li>
+        </ul>
+      </div>
+    </div>
+  ) : (
+    <p className="text-sm text-black">Layanan tidak dikenali.</p>
+  )
 
   const handleSubmit = async () => {
     if (!agreed || !signature) {
@@ -259,6 +86,7 @@ export default function AgreementPage() {
       setIsLoading(false)
     }
   }
+  
 
   return (
     <div className="min-h-screen bg-white relative">
