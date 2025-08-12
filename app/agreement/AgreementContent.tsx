@@ -6,7 +6,7 @@ import SignaturePad from '../components/SignaturePad'
 import axios from 'axios'
 import { ChevronLeftIcon } from '@heroicons/react/20/solid'
 
-export default async function AgreementContent() {
+export default function AgreementContent() {
   const searchParams = useSearchParams()
   const layanan = searchParams.get('layanan') || ''
   const nama = searchParams.get('nama') || ''
