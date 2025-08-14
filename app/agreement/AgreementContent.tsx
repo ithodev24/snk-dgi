@@ -45,6 +45,11 @@ export default function AgreementContent() {
       <div className="mt-4">
         <strong>Notes Tambahan :</strong>
 
+        <p className="mt-2 font-semibold">Jaminan Keamanan Data</p>
+         <ul className="list-disc list-inside ml-4">
+        <li>Pihak rental menjamin keamanan data yg diberikan oleh customer dan penggunaan data bagi yang wanprestasi</li>
+          </ul>
+
         <p className="mt-2 font-semibold">Kelengkapan Syarat Sewa Khusus Wisatawan</p>
         <ul className="list-disc list-inside ml-4">
           <li>Melampirkan KTP/Paspor</li>
